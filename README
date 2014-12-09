@@ -4,7 +4,7 @@ Obsolete Perl code for non-parametric Bayesian text segmentation
 This repository contains Perl code I no longer use, including
 
 * a group of Dirichlet/Pitman-Yor processes,
-* character-based bigram word model, and
-* unigram/bigram word model with token-based, block and type-based sampling.
+* a character-based bigram word model, and
+* unigram/bigram word models with token-based, block and type-based sampling.
 
 
