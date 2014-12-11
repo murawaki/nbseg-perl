@@ -4,7 +4,7 @@ Obsolete Perl code for non-parametric Bayesian text segmentation
 This repository contains Perl code I no longer use, including
 
 * a group of Dirichlet/Pitman-Yor processes,
-* a character-based bigram word model, and
+* a character-bigram-based zerogram word model, and
 * unigram/bigram word models with token-based, block and type-based sampling.
 
 
@@ -14,7 +14,7 @@ Requirements
 The following CPAN modules are required:
 
 * Math::GSL
-* MAth::Cephes
+* Math::Cephes
 * Regexp::Assemble
 * Carp::Assert
 
