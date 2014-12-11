@@ -167,7 +167,7 @@ sub remove {
     my $isEmpty = 0;
     if ($emptyIndex >= 0) {
 	splice(@$histogram, $emptyIndex, 1);
-	my $tableMarginal = $restaurant->{tableMarginal}--;
+	my $tableMarginal = --$restaurant->{tableMarginal};
 	if ($tableMarginal <= 0) {
 	    $isEmpty = 1;
 	}

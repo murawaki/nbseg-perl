@@ -248,20 +248,32 @@ sub sampleHyper {
 	}
     }
     if ($opt->{nested}) {
-	my $b_dOld = $zero->{bigram}->{d};
-	my $b_thetaOld = $zero->{bigram}->{theta};
-	my $u_dOld = $zero->{unigram}->{d};
-	my $u_thetaOld = $zero->{unigram}->{theta};
-	$zero->sampleHyper;
-	my $b_dNew = $zero->{bigram}->{d};
-	my $b_thetaNew = $zero->{bigram}->{theta};
-	my $u_dNew = $zero->{unigram}->{d};
-	my $u_thetaNew = $zero->{unigram}->{theta};
-	if ($opt->{debug}) {
-	    printf STDERR ("char bigram d %f -> %f\n", $b_dOld, $b_dNew);
-	    printf STDERR ("char bigram theta %f -> %f\n", $b_thetaOld, $b_thetaNew);
-	    printf STDERR ("char unigram d %f -> %f\n", $u_dOld, $u_dNew);
-	    printf STDERR ("char unigram theta %f -> %f\n", $u_thetaOld, $u_thetaNew);
+	if ($opt->{type} eq 'Dirichlet') {
+	    my $b_alphaOld = $zero->{bigram}->{alpha};
+	    my $u_alphaOld = $zero->{unigram}->{alpha};
+	    $zero->sampleHyper;
+	    my $b_alphaNew = $zero->{bigram}->{alpha};
+	    my $u_alphaNew = $zero->{unigram}->{alpha};
+	    if ($opt->{debug}) {
+		printf STDERR ("char bigram alpha %f -> %f\n", $b_alphaOld, $b_alphaNew);
+		printf STDERR ("char unigram alpha %f -> %f\n", $u_alphaOld, $u_alphaNew);
+	    }
+	} else {
+	    my $b_dOld = $zero->{bigram}->{d};
+	    my $b_thetaOld = $zero->{bigram}->{theta};
+	    my $u_dOld = $zero->{unigram}->{d};
+	    my $u_thetaOld = $zero->{unigram}->{theta};
+	    $zero->sampleHyper;
+	    my $b_dNew = $zero->{bigram}->{d};
+	    my $b_thetaNew = $zero->{bigram}->{theta};
+	    my $u_dNew = $zero->{unigram}->{d};
+	    my $u_thetaNew = $zero->{unigram}->{theta};
+	    if ($opt->{debug}) {
+		printf STDERR ("char bigram d %f -> %f\n", $b_dOld, $b_dNew);
+		printf STDERR ("char bigram theta %f -> %f\n", $b_thetaOld, $b_thetaNew);
+		printf STDERR ("char unigram d %f -> %f\n", $u_dOld, $u_dNew);
+		printf STDERR ("char unigram theta %f -> %f\n", $u_thetaOld, $u_thetaNew);
+	    }
 	}
     }
 }

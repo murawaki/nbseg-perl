@@ -394,7 +394,12 @@ sub asText {
     my $rv = $FIXBND;
     my $iter = $self->nodeIterator;
     while ((my $node = $iter->next)) {
-	$rv .= $node->[$self->WORD];
+	my $word = $node->[$self->WORD];
+	unless ($plain) {
+	    $word =~ s/\-/\\-/;
+	    $word =~ s/\+/\\+/;
+	}
+	$rv .= $word;
 	$rv .= ($node->[$self->SEG_TYPE] == ref($self)->BOUNDARY)? $BND : $FIXBND;
     }
     return $rv;
