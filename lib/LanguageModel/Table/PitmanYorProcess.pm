@@ -130,7 +130,6 @@ sub add {
 	my $r = gsl_ran_flat($rng->raw, 0, $pShare + $pNew);
 	if ($r < $pShare) {
 	    $newTable = 0;
-	    $r = gsl_ran_flat($rng->raw, 0, $pShare);
 	    my $added = 0;
 	    for (my $i = 0, my $l = scalar(@$histogram); $i < $l; $i++) {
 		my $c = $histogram->[$i];
@@ -192,8 +191,8 @@ sub remove {
 	my $tableMarginal = --$restaurant->{tableMarginal};
 	if ($tableMarginal <= 0) {
 	    $isEmpty = 1;
-	    $self->{backTable}->remove(&{$self->{contextReducer}}($current, $context));
 	}
+	$self->{backTable}->remove(&{$self->{contextReducer}}($current, $context));
     }
     if (scalar(@$histogram) <= 0) {
 	delete($restaurant->{histogram}->{$current});
