@@ -62,6 +62,8 @@ sub addWord {
 	$p = $c;
     }
     $self->{bigram}->add('#', $p);
+    $self->{pool} = {};
+    $self->{keyCount} = 0;
 }
 
 sub removeWord {
@@ -73,6 +75,8 @@ sub removeWord {
 	$p = $c;
     }
     $self->{bigram}->remove('#', $p);
+    $self->{pool} = {};
+    $self->{keyCount} = 0;
 }
 
 sub drawWord {
